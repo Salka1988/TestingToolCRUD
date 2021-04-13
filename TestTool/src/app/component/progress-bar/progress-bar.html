@@ -1,0 +1,9 @@
+  <div class="progress">
+    <div class="progress-bar progress-bar-success"  [ngStyle]="{width : ((inputSucceeded * 100) / inputNumberOfTestcases + '%' ) }">
+      Succeded
+    </div>
+    <div class="progress-bar progress-bar-danger" [ngStyle]="{width : ( (inputFailed * 100) / inputNumberOfTestcases + '%' ) }">
+      Failed
+    </div>
+  </div>
+

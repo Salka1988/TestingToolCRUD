@@ -1,0 +1,40 @@
+<div>
+  <h1>{{getTestcase?.title}}</h1>
+</div>
+
+
+<!--<div *ngFor="let executions of executions">{{executions?.username}}</div>-->
+<mat-tab-group animationDuration="0ms">
+  <mat-tab label="Core Data">
+
+    <div >
+      <a *ngFor="let categ of getTestcase?.categories">&bull; {{getCategoryName(categ)}} </a>
+    </div>
+
+    <div>
+
+    <h3>Preconditions</h3>
+
+      <div>{{getTestcase?.precondition}}</div>
+    </div>
+
+    <div>
+    <h3>Test Steps</h3>
+
+      <div>{{getTestcase?.teststeps}}</div>
+    </div>
+
+    <div>
+    <h3>Expected results</h3>
+    <div>{{getTestcase?.expected_results}}</div>
+    </div>
+
+
+  </mat-tab>
+  <mat-tab label="Executions">Content 2</mat-tab>
+</mat-tab-group>
+
+
+
+<a class="mat-fab single-fab" mat-fab="" [routerLink]="['/testcase/'+ testCaseId +'/edit']" routerLinkActive="active"><mat-icon>edit</mat-icon></a>
+

@@ -1,0 +1,63 @@
+<h1>Test Cases</h1>
+
+<table mat-table [dataSource]="testCases" id="testcasesTable" class="table-testcases">
+
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+    <mat-cell class="title-cell"
+              *matCellDef="let testcase">
+      {{testcase.title}}
+
+      <a fxFlexFill [routerLink]="'/testcase/' + testcase.id" class="mat-row-link"></a>
+
+
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+
+    <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+    <mat-cell class="description-cell"
+              *matCellDef="let testcase">{{testcase.description}}
+
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="platforms">
+
+    <mat-header-cell *matHeaderCellDef>Platforms</mat-header-cell>
+    <mat-cell class="platforms-cell" *matCellDef="let testcase">
+      <mat-chip-list  *ngFor="let platform of testcase.platforms">
+        <app-platform-chip [platform]="getPlatform(platform)"></app-platform-chip>
+      </mat-chip-list>
+
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="categories">
+
+    <mat-header-cell *matHeaderCellDef>Categories</mat-header-cell>
+    <mat-cell class="categories-cell" *matCellDef="let testcase">
+      <mat-chip-list  *ngFor="let category of testcase.categories">
+        <mat-chip class="category-chip">{{getCategoryName(category)}}</mat-chip>
+      </mat-chip-list>
+
+    </mat-cell>
+  </ng-container>
+
+
+
+
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+
+
+</table>
+
+<mat-paginator [pageSizeOptions]="[8, 12, 16, 20]" showFirstLastButtons id="testcasesPaginator"></mat-paginator>
+
+
+<div *ngIf="!categoryId">
+<a class="mat-fab single-fab" mat-fab="" [routerLink]="['/testcase/new']" routerLinkActive="active"><mat-icon>add</mat-icon></a>
+</div>

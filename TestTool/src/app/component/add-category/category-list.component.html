@@ -1,0 +1,38 @@
+<h1>Categories</h1>
+<div>
+  <form [formGroup]="addCategoryForm"
+        (ngSubmit)="save()">
+    <mat-form-field>
+      <input matInput [(ngModel)]="addCategory.title" formControlName="name"
+             placeholder="Add new category">
+      <mat-error *ngIf="addCategoryForm.get('name').hasError('required')"> Add name </mat-error>
+      <mat-error *ngIf="addCategoryForm.get('name').hasError('duplicateTags')"> Category already exists </mat-error>
+    </mat-form-field>
+
+    <button mat-button matSuffix mat-stroked-button color="primary"
+            [disabled]="addCategoryForm.invalid " (click)="save()">Save
+      <mat-icon>save</mat-icon>
+
+    </button>
+  </form>
+</div>
+
+<mat-table [dataSource]="categoriesList">
+
+  <ng-container matColumnDef="categories">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell class="categories-cell"
+              *matCellDef="let categ">{{categ.title}}
+
+      <a fxFlexFill
+         [routerLink]="'/testcases/category/' + categ?.id"
+         class="mat-row-link"></a>
+
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+
+</mat-table>
+

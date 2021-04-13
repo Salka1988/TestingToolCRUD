@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">FITAPP Test Tool&nbsp;&nbsp;
+
+  <div *ngFor="let navItem of leftNavItems">
+    <a class="mat-button" mat-button="" href="{{navItem.dest}}">
+    <span class="mat-button-wrapper">{{navItem.name}}</span>
+    <div class="mat-button-ripple mat-ripple" matripple=""></div>
+    <div class="mat-button-focus-overlay"></div>
+  </a>
+  </div>
+
+  <span class="fill-remaining-space"></span>
+
+  <div *ngFor="let navItem of rightNavItems">
+    <a class="mat-button" mat-button="" href="{{navItem.dest}}">
+      <span class="mat-button-wrapper">{{navItem.name}}</span>
+      <div class="mat-button-ripple mat-ripple" matripple=""></div>
+      <div class="mat-button-focus-overlay"></div>
+    </a>
+  </div>
+
+</mat-toolbar>
+
+

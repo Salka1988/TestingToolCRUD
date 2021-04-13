@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Build Prod" type="js.build_tools.npm" factoryName="npm">
+    <package-json value="$PROJECT_DIR$/TestTool/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="build:prod" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs />
+    <method />
+  </configuration>
+</component>

@@ -1,0 +1,89 @@
+<div >
+
+  <h1>Test Run {{getExecution?.dateofexecution?.toDate().toLocaleDateString()}}</h1>
+
+  <ng-container>
+
+    <app-platform-chip [platform]="getPlatform(getExecution?.platform)" ></app-platform-chip>
+
+    <a>&bull; {{getExecution?.version}} </a>
+    <a> &bull; {{getExecution?.device}} &bull; </a>
+    <a *ngFor="let categ of getExecution?.categories">{{ getCategoryName(categ)}} </a>
+
+  </ng-container>
+
+</div>
+<br>
+
+
+<progress-bar [inputFailed]="getExecution?.numberOfFailures"
+              [inputSucceeded]="getExecution?.numberOfSuccesses"
+              [inputNumberOfTestcases]="getExecution?.totalTestCases">Data</progress-bar>
+
+
+<div style="float: right;display: inline">
+  <label>Comment</label>
+  <div class="input-group-prepend card-body p-2" *ngIf="testcases_for_exec">
+    <textarea rows="15"  cols="70"
+              [value]="testcases_for_exec.comment"
+              [(ngModel)]="testcases_for_exec.comment"></textarea >
+  </div>
+</div>
+
+
+
+
+<div>
+  <h2>{{testcases_for_exec?.title}}</h2>
+  <h3>Preconditions</h3>
+  <ul>
+    <!--<ng-template ngFor let-item [ngForOf]="testcases_for_exec?.precondition.split('.', countDots(testcases_for_exec.precondition))">-->
+      <!--<li *ngIf="item?.length">-->
+        <!--<div>{{item}}</div>-->
+      <!--</li>-->
+    <!--</ng-template>-->
+  <div>{{testcases_for_exec?.precondition}}</div>
+  </ul>
+
+  <h3>Test Steps</h3>
+  <ul>
+    <!--<div *ngIf="testcases_for_exec">-->
+    <!--<ng-template ngFor let-item [ngForOf]="testcases_for_exec.teststeps.split('.')">-->
+    <!--<li *ngIf="item?.length">-->
+    <!--<div>{{item}}</div>-->
+    <!--</li>-->
+    <!--</ng-template>-->
+    <!--</div>-->
+    <div>{{testcases_for_exec?.teststeps}}</div>
+  </ul>
+
+
+  <h3>Expected results</h3>
+  <ul>
+      <li>
+        <div>{{testcases_for_exec?.expected_results}}</div>
+      </li>
+  </ul>
+
+
+</div>
+
+
+<div style="float: right" *ngIf="testcases_for_exec">
+  <a class="mat-fab single-fab" mat-fab=""><mat-icon
+    (click)="updateCommentAndState(execID,testcases_for_exec?.id,testcases_for_exec?.comment,SKIPPED)"
+  >watch_later</mat-icon></a>
+
+
+  <a class="mat-fab single-fab" mat-fab=""><mat-icon
+    (click)="updateCommentAndState(execID,testcases_for_exec?.id,testcases_for_exec?.comment,FAILED)"
+  >block</mat-icon></a>
+
+
+
+  <a class="mat-fab single-fab" mat-fab=""><mat-icon
+    (click)="updateCommentAndState(execID,testcases_for_exec?.id,testcases_for_exec?.comment,SUCCEEDED)"
+  >check_circle</mat-icon></a>
+</div>
+
+

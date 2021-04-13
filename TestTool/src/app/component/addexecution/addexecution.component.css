@@ -1,0 +1,45 @@
+.header{
+  text-align: center;
+}
+.container{
+  text-align: center;
+}
+
+.single_input {
+  margin: auto;
+  text-align: center;
+  align-content: center;
+}
+
+
+#submit_button {
+  background-color: #4CAF50;
+  border-color: #333333;
+}
+
+.exec-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.exec-container > * {
+  width: 100%;
+}
+
+.exec-container form {
+  margin-bottom: 20px;
+}
+
+.exec-container form > * {
+  margin: 5px 0;
+}
+
+.exec-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.exec-full-width {
+  width: 100%;
+}

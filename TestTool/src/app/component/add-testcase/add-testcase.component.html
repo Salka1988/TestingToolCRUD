@@ -1,0 +1,82 @@
+<div class="col bg-dark text-white">
+  <h3>Add a new Test Case</h3>
+
+  <div>
+
+  </div>
+
+  <div class="input-group-prepend card-body p-2">
+    <mat-form-field>
+      <input matInput placeholder="Title"
+             [(ngModel)]="add_testcase.title">
+    </mat-form-field>
+  </div>
+
+
+  <div class="input-group-prepend card-body p-2">
+  <mat-form-field>
+    <textarea matInput placeholder="Precondition"
+              [(ngModel)]="add_testcase.precondition" ></textarea>
+  </mat-form-field>
+  </div>
+
+  <div class="input-group-prepend card-body p-2">
+    <mat-form-field>
+    <textarea matInput placeholder="Expected Results"
+              [(ngModel)]="add_testcase.expected_results"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="input-group-prepend card-body p-2">
+    <mat-form-field>
+    <textarea matInput placeholder="Test Steps"
+              [(ngModel)]="add_testcase.teststeps"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="input-group-prepend card-body p-2">
+    <mat-form-field>
+    <textarea matInput placeholder="Description"
+              [(ngModel)]="add_testcase.description"></textarea>
+    </mat-form-field>
+  </div>
+
+
+  <div>
+    <h5>Operating System</h5>
+    <ng-container *ngFor="let item of platforms">
+
+      <div>
+      <mat-checkbox
+        (change)="addPlatform(item.id)"
+        [checked]="false">{{item.title}}</mat-checkbox>
+      </div>
+
+    </ng-container>
+  </div>
+
+  <div>
+    <h5>Categories</h5>
+    <ng-container *ngFor="let item of categories">
+
+      <div>
+      <mat-checkbox
+        (change)="addCategory(item.id)"
+        [checked]="false">{{item.title}}</mat-checkbox>
+      </div>
+
+    </ng-container>
+  </div>
+
+
+</div>
+
+<p>
+  <span>
+    <button mat-stroked-button  color="primary" (click)="onSubmit()">Submit</button>
+  </span>
+</p>
+
+
+
+

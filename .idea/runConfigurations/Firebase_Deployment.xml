@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Firebase Deployment" type="js.build_tools.npm" factoryName="npm">
+    <package-json value="$PROJECT_DIR$/TestTool/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="firebase-deploy" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs />
+    <method>
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build Prod" run_configuration_type="js.build_tools.npm" />
+    </method>
+  </configuration>
+</component>

@@ -1,0 +1,20 @@
+.header{
+  text-align: center;
+}
+.container{
+  text-align: center;
+}
+
+.single_input {
+  margin: auto;
+  text-align: center;
+  align-content: center;
+}
+
+
+#submit_button {
+  background-color: #4CAF50;
+  border-color: #333333;
+}
+
+

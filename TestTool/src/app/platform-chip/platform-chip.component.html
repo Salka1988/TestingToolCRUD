@@ -1,0 +1,3 @@
+<mat-chip *ngIf="platform != null" class="platform-chip" [ngStyle]="{'background-color': getBackgroundColor()}" [matTooltip] = platform.title>
+  <mat-icon>{{platform.icon}}</mat-icon>
+</mat-chip>

@@ -1,0 +1,52 @@
+.progress{
+  display:-ms-flexbox;
+  display:flex;height:16px;
+  overflow:hidden;
+  font-size: 12px;
+  background-color:#e9ecef;
+  border-radius:.25rem
+}
+
+.progress-bar{
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-direction:column;
+  flex-direction:column;
+  -ms-flex-pack:center;
+  justify-content:center;
+  color:#fff;
+  text-align:
+  center;white-space:
+  nowrap;background-color:#007bff;
+  transition:width .6s ease
+}
+
+.progress-bar-success
+{
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-direction:column;
+  flex-direction:column;
+  -ms-flex-pack:center;
+  justify-content:center;
+  color:#fff;
+  text-align:
+    center;white-space:
+  nowrap;background-color:#5cb85c;
+  transition:width .6s ease
+}
+
+.progress-bar-danger
+{
+  display:-ms-flexbox;
+  display:flex;
+  -ms-flex-direction:column;
+  flex-direction:column;
+  -ms-flex-pack:center;
+  justify-content:center;
+  color:#fff;
+  text-align:
+    center;white-space:
+  nowrap;background-color:#d9534f;
+  transition:width .6s ease
+}

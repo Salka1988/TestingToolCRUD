@@ -1,0 +1,72 @@
+<h1>Test Runs</h1>
+<table mat-table [dataSource]="executionsCases" id="testcasesTable" class="table-testcases">
+
+  <ng-container matColumnDef="dateofexecution">
+    <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+
+    <mat-cell class="dateofexecution-cell"
+              *matCellDef="let execution">
+
+      {{execution.dateofexecution?.toDate().toLocaleDateString()}}
+
+      <a fxFlexFill [routerLink]="'/execution/' + execution.id" class="mat-row-link"></a>
+
+    </mat-cell>
+
+  </ng-container>
+
+  <ng-container matColumnDef="version">
+    <mat-header-cell *matHeaderCellDef>Version</mat-header-cell>
+    <mat-cell class="version-cell"
+              *matCellDef="let execution">{{execution.version}}</mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="categories">
+    <mat-header-cell *matHeaderCellDef>Categories</mat-header-cell>
+    <mat-cell class="categories-cell" *matCellDef="let execution">
+      <mat-chip-list  *ngFor="let category of execution.categories">
+        <mat-chip class="category-chip">{{getCategoryName(category)}}</mat-chip>
+      </mat-chip-list>
+    </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="platforms">
+
+    <mat-header-cell *matHeaderCellDef>Platform</mat-header-cell>
+    <mat-cell class="platforms-cell" *matCellDef="let execution">
+        <app-platform-chip [platform]="getPlatform(execution.platform)"></app-platform-chip>
+    </mat-cell>
+  </ng-container>
+
+
+
+  <ng-container matColumnDef="device">
+    <mat-header-cell *matHeaderCellDef>Device</mat-header-cell>
+    <mat-cell class="device-cell"
+              *matCellDef="let execution">{{execution.device}}</mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="user">
+    <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+    <mat-cell class="user-cell"
+              *matCellDef="let execution">{{getUserName(execution.userid)}}</mat-cell>
+  </ng-container>
+
+
+
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+
+</table>
+
+<mat-paginator [pageSizeOptions]="[8, 12, 16, 20]" showFirstLastButtons id="testcasesPaginator"></mat-paginator>
+
+
+<a class="mat-fab single-fab" mat-fab="" [routerLink]="['/execution/new']" routerLinkActive="active"><mat-icon>add</mat-icon></a>
+
+
+
+

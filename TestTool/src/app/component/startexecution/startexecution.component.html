@@ -1,0 +1,57 @@
+
+<div>
+
+  <h1>Test Run {{getExecution?.dateofexecution?.toDate().toLocaleDateString()}}</h1>
+  <ng-container>
+
+  <h3>Created by: {{getUserName(exec?.userid)}}</h3>
+
+  <app-platform-chip [platform]="getPlatform(getExecution?.platform)" ></app-platform-chip>
+  <a>&bull; {{getExecution?.version}} </a>
+  <a> &bull; {{getExecution?.device}} &bull; </a>
+  <a *ngFor="let categ of getExecution?.categories">{{ getCategoryName(categ)}} </a>
+
+  </ng-container>
+
+</div>
+
+
+
+<table mat-table [dataSource]="testCasesForExec" id="testcasesTable" class="table-testcases">
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+      <mat-cell class="version-cell"
+                *matCellDef="let tests">{{tests?.title}}
+        <a fxFlexFill
+           [routerLink]="'/execution/' + getExecution?.id + '/run/' + tests?.id"
+           class="mat-row-link"></a>
+
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="comment">
+      <mat-header-cell *matHeaderCellDef>Comments</mat-header-cell>
+      <mat-cell class="version-cell"
+                *matCellDef="let tests">{{tests.comment}}</mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+      <mat-cell class="version-cell"
+                *matCellDef="let tests">{{tests.state}}</mat-cell>
+    </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+
+</table>
+
+<mat-paginator [pageSizeOptions]="[8, 12, 16, 20]" showFirstLastButtons id="testcasesPaginator"></mat-paginator>
+
+
+<a class="mat-fab single-fab" mat-fab="" [routerLink]="['/execution/'+ getExecution?.id +'/run']"
+   routerLinkActive="active"><mat-icon>play_arrow</mat-icon></a>
+

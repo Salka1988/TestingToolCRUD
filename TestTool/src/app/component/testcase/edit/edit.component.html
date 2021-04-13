@@ -1,0 +1,87 @@
+<div class="col bg-dark text-white">
+  <h3>Edit test case</h3>
+</div>
+
+<div class="container text-center">
+
+  <div class="col-18 col-md-14 col-lg-112 pb-11 card rounded" >
+
+    <div class="input-group-prepend card-body p-2" *ngIf="testCase">
+      <mat-form-field>
+        <input matInput placeholder="Title"
+               [value]="testCase?.title"
+               [(ngModel)]="testCase.title">
+      </mat-form-field>
+    </div>
+
+    <div class="input-group-prepend card-body p-2" *ngIf="testCase">
+      <mat-form-field>
+        <textarea matInput placeholder="Precondition"
+                  [value]="testCase?.precondition"
+                  [(ngModel)]="testCase.precondition" ></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="input-group-prepend card-body p-2" *ngIf="testCase">
+      <mat-form-field>
+        <textarea matInput placeholder="Expected Results"
+                  [value]="testCase?.expected_results"
+                  [(ngModel)]="testCase.expected_results"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="input-group-prepend card-body p-2" *ngIf="testCase">
+      <mat-form-field>
+        <textarea matInput placeholder="Test Steps"
+                  [value]="testCase?.teststeps"
+                  [(ngModel)]="testCase.teststeps"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="input-group-prepend card-body p-2" *ngIf="testCase">
+      <mat-form-field>
+        <textarea matInput placeholder="Description"
+                  [value]="testCase?.description"
+                  [(ngModel)]="testCase.description"></textarea>
+      </mat-form-field>
+    </div>
+
+
+
+    <div>
+      <h5>Operating System</h5>
+      <ng-container *ngFor="let item of platforms">
+        <div>
+
+          <mat-checkbox
+            (change)="addPlatform(item.id)"
+            [checked]="inPlatforms(item?.id)">
+            {{item.title}}
+          </mat-checkbox>
+        </div>
+      </ng-container>
+    </div>
+
+    <div>
+      <h5>Categories</h5>
+      <ng-container *ngFor="let item of categories">
+        <div>
+        <mat-checkbox
+          (change)="addCategory(item.id)" [checked]="inCategory(item.id)">
+          {{item.title}}</mat-checkbox>
+        </div>
+      </ng-container>
+    </div>
+
+    </div>
+
+
+</div>
+
+<p>
+  <span>
+    <button mat-stroked-button  color="primary" (click)="onSubmit()">Submit</button>
+    <button mat-stroked-button  color="primary" (click)="openModal()">Delete</button>
+  </span>
+</p>
+

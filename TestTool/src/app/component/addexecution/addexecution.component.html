@@ -1,0 +1,55 @@
+<div>
+  <h3>Create Test Run</h3>
+
+  <div  class="exec-container">
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Application Version"
+               [(ngModel)]="add_execution.version">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Device name"
+               [(ngModel)]="add_execution.device">
+      </mat-form-field>
+    </div>
+
+
+    <div>
+      <form class="exec-form">
+        <mat-form-field class="exec-full-width" >
+          <input type="text" placeholder="Platform" aria-label="Number"
+                 matInput  [formControl]="myControl" [matAutocomplete]="auto" >
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectChangeHandler($event)">
+            <mat-option *ngFor="let option of platform_to_chose" [value]="option.title">
+              {{option.title}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+
+    <ng-container *ngFor="let item of categories_to_chose">
+      <div>
+        <mat-checkbox
+          (change)="addCategory(item.id)" [checked]="false">
+          {{item.title}}
+        </mat-checkbox>
+      </div>
+    </ng-container>
+  </div>
+
+</div>
+
+<p>
+  <span>
+  <button mat-stroked-button  color="primary" (click)="onSubmit()">Submit</button>
+  </span>
+</p>
+
+
+
+
